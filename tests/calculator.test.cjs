@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-const c = require('./calculator.js');
+const c = require('../js/calculator.js');
 const g = c.defaults('grating');
 assert.equal(c.calculate('grating', g).total, 78000);
 assert.equal(c.calculate('grating', {...g,finish:'none'}).total,65000);
