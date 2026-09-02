@@ -1,0 +1,14 @@
+[
+  [
+    "platform",
+    "Cinematic architectural visualization, wide landscape 1536x1024. Eye-level low angle photograph-style render of an intricate galvanized steel grating elevated maintenance walkway inside a monumental industrial hall. Extreme detail in grating lattice in the foreground, silver guardrails converge to warm amber light deep in the background, charcoal structural beams, subtle warm rust steel accents. Industrial precision and quiet confidence, photoreal materials. No people, no text, no logos, no signage. This is a conceptual application illustration for a Russian steel manufacturer, not documentary photography. Strong horizontal composition, premium editorial product imagery."
+  ],
+  [
+    "structure",
+    "Cinematic architectural visualization, wide landscape 1536x1024. Monumental steel portal frame of a new industrial building, repeated dark steel columns and triangular roof trusses in impeccable perspective, no walls, warm late afternoon sun from the side, weathered copper brown metal with silver steel edges, concrete floor, overcast charcoal sky. Photoreal details, premium engineering editorial, visually powerful but plausible structure. No people, no text, no logos. Conceptual application visualization for a steel manufacturer, not a completed real project."
+  ],
+  [
+    "modules",
+    "Cinematic architectural visualization, wide landscape 1536x1024. Refined array of three modular block containers on a clean industrial site, warm terracotta corrugated steel cladding, dark graphite doors, glazing, external steel stair and silver grating landing. Eye level three-quarter architectural perspective, late afternoon cinematic warm sunlight, subdued charcoal surroundings, realistic metal textures, understated premium industrial engineering, no people no signs no text no logos. A conceptual application visualization, not documentary photography."
+  ]
+]

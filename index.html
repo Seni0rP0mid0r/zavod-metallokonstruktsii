@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ce613e"><meta name="description" content="Металлоконструкции, решётчатый настил и модульные решения. Выберите элементы конструкции и составьте предварительный расчёт.">
+  <title>ЭТАЛОН — металл в основе ваших идей</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="refinement.css"><link rel="stylesheet" href="screens.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script><script defer src="calculator.js"></script><script defer src="script.js"></script>
+<link rel="stylesheet" href="site.css"><script defer src="site.js"></script>
+<link rel="stylesheet" href="footer.css"></head>
+<body>
+<a class="skip" href="#calculator">Перейти к расчёту</a>
+<header class="header">
+<a class="brand" href="./" aria-label="Эталон — на главную"><span class="brand-logo"><img src="assets/etalon-logo-white.png" alt="ЭТАЛОН"></span></a>
+<nav id="site-nav" aria-label="Главная навигация"><a href="./">ГЛАВНАЯ</a>
+<details class="nav-dropdown"><summary>КАТАЛОГ</summary><div class="catalog-menu"><a href="page.html?slug=catalog">Вся продукция</a><details class="nav-submenu"><summary>Решётчатый настил</summary><div><a href="page.html?slug=grating">О решётчатом настиле</a><a href="page.html?slug=pressed">Прессованный настил</a><a href="page.html?slug=welded">Сварной настил</a></div></details><details class="nav-submenu"><summary>Металлоконструкции</summary><div><a href="page.html?slug=structures">Все металлоконструкции</a><a href="page.html?slug=lstk">ЛСТК</a></div></details><details class="nav-submenu"><summary>Блок-контейнеры</summary><div><a href="page.html?slug=cabins">О блок-контейнерах</a><a href="page.html?slug=site-cabins">Вагоны-бытовки</a><a href="page.html?slug=chassis-cabins">Вагоны на шасси</a><a href="page.html?slug=sea-containers">Морские контейнеры</a></div></details><a href="page.html?slug=treatment">Очистные сооружения</a><a href="page.html?slug=doors">Двери</a><a href="page.html?slug=ventilation">Вентиляция</a></div></details>
+<details class="nav-dropdown"><summary>КОМПАНИЯ</summary><div><a href="page.html?slug=company">О компании</a><a href="page.html?slug=engineering">Технический отдел</a><a href="page.html?slug=partners">Партнёры</a></div></details>
+<a href="page.html?slug=projects">ПРОЕКТЫ</a><a href="page.html?slug=contacts">КОНТАКТЫ</a>
+<details class="nav-dropdown"><summary>БЛОГ</summary><div><a href="page.html?slug=blog">Все материалы</a><a href="page.html?slug=article-grating">Выбор настила</a><a href="page.html?slug=article-kmd">Подготовка КМД</a></div></details></nav>
+<a class="header-calc" href="./#calculator">РАССЧИТАТЬ ПРОЕКТ <span>↗</span></a><button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button></header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">МЕТАЛЛОКОНСТРУКЦИИ ПОД ВАШУ ЗАДАЧУ.</p>
+      <h1 id="hero-title">НАДЁЖНЫЕ<br>МЕТАЛЛО&shy;КОНСТРУКЦИИ<br>ДЛЯ СЛОЖНЫХ<br>ЗАДАЧ</h1>
+      <p class="hero-description">От решётчатого настила до готового модуля. Выберите изделие и настройте его под свой проект.</p>
+      <a class="primary" href="#calculator">Собрать и рассчитать <span>↗</span></a>
+      <div class="hero-bottom"><span>МЕТАЛЛОКОНСТРУКЦИИ<br>ДЛЯ ВАШИХ ПРОЕКТОВ</span><a href="#products">Смотреть продукцию <span>↓</span></a></div>
+    </div>
+    <div class="hero-engineering">
+      <div class="drawing-top"><span><i></i> ИНТЕРАКТИВНАЯ МОДЕЛЬ</span><a class="model-calculator-link" href="#calculator">К расчёту ↓</a></div>
+      <div class="model" id="model">
+        <div class="axis" aria-hidden="true"></div>
+        <div class="stack" aria-label="Выберите части конструкции">
+          <button class="layer" data-product="grating" style="--top:0%;--height:22.5%;--offset:0%" aria-pressed="false" aria-label="Выбрать решётчатый настил"><img src="assets/industrial-stack-v2.png" alt="Стальная площадка с решётчатым настилом" fetchpriority="high" draggable="false"></button>
+          <button class="layer" data-product="frame" style="--top:22.5%;--height:27.5%;--offset:-22.5%" aria-pressed="false" aria-label="Выбрать металлоконструкции"><img src="assets/industrial-stack-v2.png" alt="Стальной каркас с диагональными связями" draggable="false"></button>
+          <button class="layer" data-product="cabin" style="--top:50%;--height:22.8%;--offset:-50%" aria-pressed="false" aria-label="Выбрать бытовку"><img src="assets/industrial-stack-v2.png" alt="Терракотовая модульная бытовка" draggable="false"></button>
+          <button class="layer" data-product="water" style="--top:72.8%;--height:27.2%;--offset:-72.8%" aria-pressed="false" aria-label="Выбрать очистное сооружение"><img src="assets/industrial-stack-v2.png" alt="Очистной бассейн с трубами и резервуаром" draggable="false"></button>
+        </div>
+        <div class="model-labels">
+          <button data-product="grating" aria-pressed="false"><span class="part-num">01</span><strong>РЕШЁТЧАТЫЙ<br>НАСТИЛ</strong><small>Площадки и перекрытия</small><span class="part-add">+</span></button>
+          <button data-product="frame" aria-pressed="false"><span class="part-num">02</span><strong>МЕТАЛЛО-<br>КОНСТРУКЦИИ</strong><small>Каркасы и несущие элементы</small><span class="part-add">+</span></button>
+          <button data-product="cabin" aria-pressed="false"><span class="part-num">03</span><strong>БЛОК-<br>КОНТЕЙНЕРЫ</strong><small>Бытовки и модульные здания</small><span class="part-add">+</span></button>
+          <button data-product="water" aria-pressed="false"><span class="part-num">04</span><strong>ОЧИСТНЫЕ<br>СООРУЖЕНИЯ</strong><small>Ёмкости и инженерные системы</small><span class="part-add">+</span></button>
+        </div>
+      </div>
+      <div class="model-caption"><span class="crosshair">⊕</span> Выберите один этаж — настройте изделие в калькуляторе <span class="caption-end">ИЗОМЕТРИЯ / 01</span></div>
+    </div>
+  </section>
+  <section class="calculation-screen" aria-label="Калькулятор и продукция">
+    <div class="calculator" id="calculator">
+      <div class="calc-heading"><span class="calc-icon">⌗</span><div><h2>КОНФИГУРАТОР ИЗДЕЛИЯ</h2><p id="selection-summary">Решётчатый настил</p></div></div>
+      <div class="calc-tabs" role="group" aria-label="Категория расчёта"></div><form class="calc-editor" id="calc-editor" novalidate></form>
+      <div class="calc-total"><small>Предварительная стоимость <span title="Демонстрационные расценки, не коммерческое предложение">*</span></small><strong id="total" aria-live="polite">0 ₽</strong><div id="calc-breakdown"></div><p id="calc-error" role="status"></p><span>Демо-расчёт · без доставки и монтажа</span></div>
+      <button class="calc-next" id="view-order">Заявка менеджеру <span>↗</span><small id="order-count">Только выбранное изделие</small></button>
+    </div>
+  <section class="products" id="products" aria-labelledby="products-title"><div class="section-line"><h2 id="products-title">ТОЧНО ПОД ВАШУ ЗАДАЧУ</h2><span>ПРОДУКЦИЯ В ДЕТАЛЯХ <span>↘</span></span></div><div class="product-grid" id="product-grid"></div></section>
+  </section>
+<section class="showcase" aria-labelledby="showcase-title"><div class="wide-heading"><h2 id="showcase-title">МЕТАЛЛ В МАСШТАБЕ<br>ВАШЕГО ПРОЕКТА.</h2><p>Посмотрите, как отдельное изделие<br>становится частью большой системы.</p></div><div class="showcase-stage" tabindex="0" aria-label="Галерея применений. Переключайте стрелками клавиатуры"><img id="showcase-image" src="assets/showcase-platform.png" width="1536" height="1024" alt="Визуализация площадки с решётчатым настилом" loading="lazy"><div class="showcase-copy"><span id="slide-count">01 / 03</span><h3 id="slide-title">ПРОЧНАЯ ОПОРА.<br>ОТКРЫТАЯ СТРУКТУРА.</h3><p id="slide-text">Решётчатый настил для проходов, площадок и технологических перекрытий.</p><a id="slide-link" href="page.html?slug=grating">Подробнее о настиле ↗</a></div><span class="visualization-note">Концептуальная визуализация применения</span></div><div class="showcase-controls"><div class="slide-tabs" role="group" aria-label="Выбрать применение"><button data-slide="0" aria-pressed="true">Настил</button><button data-slide="1" aria-pressed="false">Каркас</button><button data-slide="2" aria-pressed="false">Модуль</button></div><div><button id="slide-prev" aria-label="Предыдущее изображение">←</button><button id="slide-next" aria-label="Следующее изображение">→</button></div></div></section>
+<section class="company-section" id="approach"><h2>ТОЧНОСТЬ НАЧИНАЕТСЯ<br>ЗАДОЛГО ДО МЕТАЛЛА.</h2><div class="company-columns"><p class="company-lead">ООО «ПК-П ЭТАЛОН» — производство и инженерная проработка под одну задачу. Вашу.</p><div><p>Компания занимает лидирующие позиции на рынке Российской Федерации как производитель высококачественного решётчатого настила. Мы производим сварной и прессованный настил, металлоконструкции, ЛСТК и блок-контейнеры для различных целей.</p><p>В основе наших изделий — прочность, долговечность и внимание к требованиям качества. Технический отдел оперативно обрабатывает запросы и задания, чтобы предложить решение под ваши требования и спецификации.</p><a href="page.html?slug=company">Больше о компании ↗</a></div></div><div class="engineering-flow"><article><span>01 — ИСХОДНЫЕ ДАННЫЕ</span><h3>Разбираемся в задаче</h3><p>Назначение, размеры, нагрузки, условия эксплуатации. Собираем основу для технического решения.</p></article><article><span>02 — ПРОЕКТИРОВАНИЕ</span><h3>Продумываем детали</h3><p>Индивидуальные чертежи, раскладка настила на несущих конструкциях и деталировка КМД.</p></article><article><span>03 — СОГЛАСОВАНИЕ</span><h3>Фиксируем спецификацию</h3><p>Состав изделия, покрытие и комплектация — чтобы результат соответствовал вашему проекту.</p></article><article><span>04 — РАСЧЁТ И ПОСТАВКА</span><h3>Уточняем условия заказа</h3><p>Переходим от согласованной спецификации к обсуждению стоимости, состава поставки и условий получения продукции.</p></article></div></section>
+<section class="partners-section"><div class="wide-heading"><h2>НАШИ ПАРТНЁРЫ</h2><p>Промышленность. Инфраструктура.<br>Задачи государственного масштаба.</p></div><div class="partners-grid" data-partners></div></section>
+<section class="contact-section" id="request"><div class="contact-intro"><h2>ВАШ ПРОЕКТ.<br>НАША СЛЕДУЮЩАЯ<br>ЗАДАЧА.</h2><p>Расскажите, что нужно изготовить. Технический отдел поможет перейти от идеи к спецификации.</p><div class="published-contacts"><a href="tel:+79161219988">+7 (916) 121-99-88</a><a href="mailto:sales@etalonorg.ru">sales@etalonorg.ru</a><span>Производство: Псковская область, Великие Луки</span></div><div class="contact-selection">Текущий расчёт: <strong id="contact-product">Индивидуальный запрос</strong><button id="footer-order" type="button">Посмотреть параметры ↗</button></div></div>
+<form data-contact-form><label class="lead-field">Ваше имя<input name="name" required minlength="2" maxlength="80" autocomplete="name" placeholder="Как к вам обращаться"></label><div class="lead-contact"><label class="lead-field">Телефон<input name="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label><label class="lead-field">Электронная почта<input name="email" type="email" maxlength="120" autocomplete="email" placeholder="name@company.ru"></label></div><p class="contact-help">Достаточно телефона или электронной почты.</p><label class="lead-field">О вашем проекте<textarea name="comment" maxlength="2000" rows="4" placeholder="Продукция, размеры, объём и город поставки"></textarea></label><label class="consent"><input type="checkbox" name="consent" required><span>Разрешаю использовать контакты для ответа на мою заявку.</span></label><button class="primary" type="submit">Подготовить заявку <span>↗</span></button><p class="demo-form-note">Пока это демо-форма. Отправка почты не подключена, данные никуда не передаются.</p><p class="contact-status" role="status"></p></form></section>
+</main>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-identity"><a href="./" class="footer-logo" aria-label="Эталон — на главную"><img src="assets/etalon-logo-white.png" alt="ЭТАЛОН" width="96" height="96" loading="lazy"></a><strong>ООО «ПК-П ЭТАЛОН»</strong><p>Металлоконструкции и решётчатый настил.<br>Производство и инженерная проработка под вашу задачу.</p><div class="published-contacts"><a href="tel:+79161219988">+7 (916) 121-99-88</a><a href="mailto:sales@etalonorg.ru">sales@etalonorg.ru</a><span>Производство: Псковская область, Великие Луки</span></div></div>
+    <div class="footer-project"><h2>НАЧНЁМ С ВАШЕГО ПРОЕКТА.</h2><div class="footer-actions"><a href="./#calculator">Рассчитать изделие <span aria-hidden="true">↗</span></a><a href="#request">Подготовить заявку <span aria-hidden="true">↗</span></a></div></div>
+  </div>
+  <div class="footer-directory">
+    <nav class="footer-nav footer-catalog" aria-label="Продукция в подвале"><h3>Продукция</h3><ul><li><a href="page.html?slug=catalog">Весь каталог ↗</a></li><li><a href="page.html?slug=grating">Решётчатый настил</a></li><li><a href="page.html?slug=pressed">Прессованный настил</a></li><li><a href="page.html?slug=welded">Сварной настил</a></li><li><a href="page.html?slug=structures">Металлоконструкции</a></li><li><a href="page.html?slug=lstk">ЛСТК</a></li><li><a href="page.html?slug=cabins">Бытовки и блок-контейнеры</a></li><li><a href="page.html?slug=site-cabins">Вагоны-бытовки</a></li><li><a href="page.html?slug=chassis-cabins">Вагоны на шасси</a></li><li><a href="page.html?slug=sea-containers">Морские контейнеры</a></li><li><a href="page.html?slug=treatment">Очистные сооружения</a></li><li><a href="page.html?slug=doors">Двери</a></li><li><a href="page.html?slug=ventilation">Вентиляция</a></li></ul></nav>
+    <nav class="footer-nav" aria-label="Компания в подвале"><h3>Компания</h3><ul><li><a href="./">Главная</a></li><li><a href="page.html?slug=company">О компании</a></li><li><a href="page.html?slug=engineering">Технический отдел</a></li><li><a href="page.html?slug=partners">Партнёры</a></li><li><a href="page.html?slug=projects">Проекты</a></li><li><a href="page.html?slug=contacts">Контакты</a></li></ul></nav>
+    <nav class="footer-nav" aria-label="Материалы в подвале"><h3>Материалы</h3><ul><li><a href="page.html?slug=blog">Блог</a></li><li><a href="page.html?slug=article-grating">Как выбрать настил</a></li><li><a href="page.html?slug=article-kmd">Подготовка КМД</a></li></ul><p class="footer-request-help">Для расчёта подготовьте размеры, объём, назначение изделия и город поставки.</p></nav>
+  </div>
+  <div class="footer-bottom"><p>© ООО «ПК-П ЭТАЛОН»</p><p>Калькулятор использует демонстрационные расценки. Итоговая стоимость и условия поставки требуют согласования.</p><p>Отправка заявок пока не подключена. Контактные данные из форм никуда не передаются.</p><a href="#" aria-label="Вернуться в начало страницы">Наверх ↑</a></div>
+</footer>
+
+<dialog id="order-dialog" aria-labelledby="order-title">
+  <div class="dialog-top"><span class="dialog-label">ВАШ ПРОЕКТ</span><button class="close-dialog" aria-label="Закрыть">×</button></div>
+  <h2 id="order-title">Заявка менеджеру</h2>
+  <p class="request-help">Оставьте контакты — параметры выбранного изделия уже добавлены.</p>
+  <details class="request-spec"><summary id="request-product">Параметры изделия</summary><div id="order-items"></div><p class="order-total">Ориентир <strong id="dialog-total"></strong></p></details>
+  <form id="lead-form">
+    <label class="lead-field">Ваше имя<input name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Как к вам обращаться"></label>
+    <div class="lead-contact"><label class="lead-field">Телефон<input name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="+7 (___) ___-__-__"></label><label class="lead-field">Электронная почта<input name="email" type="email" autocomplete="email" maxlength="120" placeholder="name@company.ru"></label></div>
+    <p class="contact-help">Укажите телефон или электронную почту для связи.</p>
+    <label class="lead-field">Комментарий к проекту<textarea name="comment" rows="3" maxlength="2000" placeholder="Назначение, сроки, город поставки"></textarea></label>
+    <label class="consent"><input name="consent" type="checkbox" required> <span>Разрешаю использовать указанные контакты для ответа на эту заявку.</span></label>
+    <p class="demo-form-note">Демо-форма: отправка на почту ещё не подключена. Контакты никуда не передаются.</p>
+    <p id="lead-status" role="status" aria-live="polite"></p>
+    <button class="primary" type="submit">Подготовить заявку <span>↗</span></button>
+  </form>
+</dialog>
+<noscript><p class="noscript">Для интерактивной модели и калькулятора включите JavaScript.</p></noscript>
+</body></html>
