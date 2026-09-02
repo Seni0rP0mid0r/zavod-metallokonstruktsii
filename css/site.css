@@ -90,7 +90,7 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height,90px) + 
  .home-page .hero-copy,.home-page .hero-engineering,
  .home-page .products,.home-page .calculator,
  .home-page main>.showcase,.home-page main>.company-section,
- .home-page main>.partners-section,.home-page main>.contact-section,
+ .home-page main>.contact-section,
  .home-page>.site-footer{min-height:var(--mobile-screen);scroll-margin-top:var(--header-height)}
  .home-page .hero-copy{justify-content:center}
  .home-page .hero-engineering{height:auto;padding-block:16px 0;overflow:visible}
@@ -106,4 +106,5 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height,90px) + 
  .home-page .calculator{align-content:center;padding-block:28px}
  .home-page main>.showcase,.home-page main>.company-section,.home-page main>.partners-section{display:flex;flex-direction:column;justify-content:center}
  .home-page main>.contact-section{align-content:center}
+ .home-page main>.partners-section{min-height:0;justify-content:flex-start;padding-block:32px}
 }
