@@ -74,6 +74,7 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height,90px) + 
  .hero-copy .hero-bottom{font-size:11px;line-height:1.6;margin-top:30px;gap:16px}
  .hero-engineering{padding:22px 6% 0}
  .hero-engineering .model{display:flex;flex-direction:column;gap:12px}
+ .hero-engineering .axis{display:none}
  .hero-engineering .stack{width:100%;max-width:none;height:auto;aspect-ratio:2/3;align-self:center}
  .hero-engineering .model-labels{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:22px 18px;padding:0 0 12px}
  .model-labels button{height:100%;align-self:stretch;padding:12px 0 0;text-align:left}

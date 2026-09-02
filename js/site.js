@@ -88,7 +88,7 @@
  flow.classList.add('has-tabs');flow.prepend(tabs);select(0);
 })();
 
-// Reveal the footer's return action after 70% of the scrollable page.
+// Reveal the footer's return action after 50% of the scrollable page.
 (() => {
  const link=document.querySelector('.back-to-top');if(!link)return;
  link.classList.add('is-floating');
@@ -97,7 +97,7 @@
  function update(){
   pending=false;
   const distance=document.documentElement.scrollHeight-innerHeight;
-  const visible=distance>0&&scrollY/distance>=.7;
+  const visible=distance>0&&scrollY/distance>=.5;
   link.classList.toggle('is-visible',visible);
   link.setAttribute('aria-hidden',String(!visible));
   link.tabIndex=visible?0:-1;
