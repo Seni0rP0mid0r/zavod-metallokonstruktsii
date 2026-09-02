@@ -7,7 +7,7 @@ html{scroll-padding-top:112px}
 .header-calc{display:flex;margin-right:24px;border-color:#ba6a41;color:#efdfc5;padding:14px;font-family:var(--display);letter-spacing:.8px}
 .menu-toggle{display:none}
 .hero{grid-template-columns:44% 56%}
-.hero-copy{padding:48px 27px 36px 25%;background:#bd5735 url('assets/terracotta-panel.png') left top/100% 100% no-repeat}
+.hero-copy{padding:48px 27px 36px 25%;background:#bd5735 url('../assets/terracotta-panel.png') left top/100% 100% no-repeat}
 .hero-copy:after{display:none}
 .panel-brand{display:flex;align-items:center;gap:15px;font-size:30px;font-weight:700;margin-bottom:56px;letter-spacing:1px}
 .panel-brand small{display:block;font-size:9px;letter-spacing:.5px;margin-top:4px}
