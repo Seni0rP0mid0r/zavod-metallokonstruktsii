@@ -88,6 +88,27 @@
  flow.classList.add('has-tabs');flow.prepend(tabs);select(0);
 })();
 
+// Reveal the footer's return action after 70% of the scrollable page.
+(() => {
+ const link=document.querySelector('.back-to-top');if(!link)return;
+ link.classList.add('is-floating');
+ link.closest('.site-footer').classList.add('has-floating-top');
+ let pending=false;
+ function update(){
+  pending=false;
+  const distance=document.documentElement.scrollHeight-innerHeight;
+  const visible=distance>0&&scrollY/distance>=.7;
+  link.classList.toggle('is-visible',visible);
+  link.setAttribute('aria-hidden',String(!visible));
+  link.tabIndex=visible?0:-1;
+ }
+ function schedule(){if(!pending){pending=true;requestAnimationFrame(update);}}
+ window.addEventListener('scroll',schedule,{passive:true});
+ window.addEventListener('resize',schedule);
+ new ResizeObserver(schedule).observe(document.body);
+ update();
+})();
+
 // Gentle wheel scrolling on desktop; touch, nested scrollers and reduced motion stay native.
 (() => {
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(pointer: fine)');
@@ -102,4 +123,3 @@
  },{passive:false});
  window.addEventListener('pointerdown',stop,{passive:true});window.addEventListener('keydown',stop);window.addEventListener('hashchange',stop);window.addEventListener('resize',stop);reduced.addEventListener('change',stop);
 })();
-

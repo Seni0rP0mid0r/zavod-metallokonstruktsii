@@ -1,4 +1,5 @@
 /* Shared directory and project entry points on every page. */
+.site-footer.has-floating-top{padding-bottom:calc(90px + env(safe-area-inset-bottom))}
 .site-footer{display:block;padding:64px 5% 28px;background:#151715;color:#dfded4;border-top:1px solid #414638}
 .site-footer .footer-top{display:grid;grid-template-columns:1fr 1.3fr;gap:9%;align-items:start;padding-bottom:48px}
 .footer-identity{max-width:380px}.footer-logo{display:block;width:96px;margin-bottom:20px}.footer-logo img{display:block;width:96px;height:96px;object-fit:contain}.footer-identity strong{display:block;font-size:13px;letter-spacing:.04em}.site-footer .footer-identity p{font-size:14px;line-height:1.75;color:#aeb3a3;margin:14px 0}.footer-identity>span{font-size:12px;color:#aeb3a3}
@@ -12,3 +13,7 @@
 /* A deliberate in-flow exit action: visible only where the page actually ends. */
 .site-footer .footer-bottom .back-to-top{justify-self:end;display:inline-flex;align-items:center;justify-content:center;gap:13px;min-height:50px;padding:14px 20px;border:1px solid #efaa80;background:#cf633e;color:#151715;font-size:13px;font-weight:600;line-height:1;box-shadow:0 12px 25px #0005;transition:transform .2s,background .2s}.site-footer .footer-bottom .back-to-top span{font-size:18px;line-height:1}.site-footer .footer-bottom .back-to-top:hover{background:#e69870;transform:translateY(-3px)}.site-footer .footer-bottom .back-to-top:focus-visible{outline:2px solid #f5dfcc;outline-offset:4px}
 @media(max-width:600px){.site-footer .footer-bottom .back-to-top{justify-self:end;margin-top:8px}}
+.site-footer .footer-bottom .back-to-top.is-floating{position:fixed;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));z-index:25;margin:0;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(16px);transition:opacity .22s ease,transform .22s ease,visibility .22s,background .2s}
+.site-footer .footer-bottom .back-to-top.is-floating.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.site-footer .footer-bottom .back-to-top.is-floating.is-visible:hover{transform:translateY(-3px)}
+@media(max-width:600px){.site-footer .footer-bottom .back-to-top.is-floating{right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom))}}
