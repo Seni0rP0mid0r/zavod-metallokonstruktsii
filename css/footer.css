@@ -9,3 +9,6 @@
 /* Override the former compact footer's positional flex rule. */
 .site-footer.site-footer > .footer-directory{display:grid}
 
+/* A deliberate in-flow exit action: visible only where the page actually ends. */
+.site-footer .footer-bottom .back-to-top{justify-self:end;display:inline-flex;align-items:center;justify-content:center;gap:13px;min-height:50px;padding:14px 20px;border:1px solid #efaa80;background:#cf633e;color:#151715;font-size:13px;font-weight:600;line-height:1;box-shadow:0 12px 25px #0005;transition:transform .2s,background .2s}.site-footer .footer-bottom .back-to-top span{font-size:18px;line-height:1}.site-footer .footer-bottom .back-to-top:hover{background:#e69870;transform:translateY(-3px)}.site-footer .footer-bottom .back-to-top:focus-visible{outline:2px solid #f5dfcc;outline-offset:4px}
+@media(max-width:600px){.site-footer .footer-bottom .back-to-top{justify-self:end;margin-top:8px}}

@@ -62,10 +62,11 @@ function selectProduct(key){
   renderForm();updateTotal();
   if(changed&&!reduced) $('#calc-editor').animate([{opacity:.3,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
 }
-$('.calc-tabs').innerHTML=Object.entries(definitions).map(([key,item])=>'<button type="button" data-category="'+key+'" aria-pressed="false">'+item.name+'</button>').join('');
+const tabNames={grating:'Решётчатый настил',frame:'Металло-<br>конструкции',cabin:'Блок-<br>контейнеры',doors:'Двери',ventilation:'Вентиляционные<br>системы',water:'Очистные<br>сооружения'};
+$('.calc-tabs').innerHTML=Object.entries(definitions).map(([key,item])=>'<button type="button" data-category="'+key+'" aria-pressed="false">'+(tabNames[key]||item.name)+'</button>').join('');
 document.querySelectorAll('[data-product]').forEach(el=>el.addEventListener('click',()=>{
   selectProduct(el.dataset.product);
-  if(el.closest('.hero'))scrollToSection($('#calculator'),true);
+  if(el.closest('.hero'))scrollToSection($('#calculator'));
 }));
 document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>selectProduct(el.dataset.category)));
 $('#calc-editor').addEventListener('submit',e=>e.preventDefault());
