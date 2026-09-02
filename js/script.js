@@ -65,7 +65,7 @@ function selectProduct(key){
 $('.calc-tabs').innerHTML=Object.entries(definitions).map(([key,item])=>'<button type="button" data-category="'+key+'" aria-pressed="false">'+item.name+'</button>').join('');
 document.querySelectorAll('[data-product]').forEach(el=>el.addEventListener('click',()=>{
   selectProduct(el.dataset.product);
-  if(el.closest('.hero'))scrollToSection($('#calculator'));
+  if(el.closest('.hero'))scrollToSection($('#calculator'),true);
 }));
 document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>selectProduct(el.dataset.category)));
 $('#calc-editor').addEventListener('submit',e=>e.preventDefault());
@@ -113,9 +113,9 @@ menu.addEventListener('click',()=>{
   menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('.header').classList.remove('menu-open');menu.setAttribute('aria-expanded','false');}});
-function scrollToSection(target){
+function scrollToSection(target,immediate=false){
   const top=target.getBoundingClientRect().top+scrollY-$('.header').getBoundingClientRect().height-18;
-  window.scrollTo({top:Math.max(0,top),behavior:reduced?'instant':'smooth'});
+  window.scrollTo({top:Math.max(0,top),behavior:immediate||reduced?'instant':'smooth'});
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
   const id=a.getAttribute('href');const target=id==='#'?document.body:document.querySelector(id);
