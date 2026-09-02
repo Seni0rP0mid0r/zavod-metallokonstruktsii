@@ -63,11 +63,15 @@ function selectProduct(key){
   if(changed&&!reduced) $('#calc-editor').animate([{opacity:.3,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,easing:'ease-out'});
 }
 $('.calc-tabs').innerHTML=Object.entries(definitions).map(([key,item])=>'<button type="button" data-category="'+key+'" aria-pressed="false">'+item.name+'</button>').join('');
-document.querySelectorAll('[data-product]').forEach(el=>el.addEventListener('click',()=>selectProduct(el.dataset.product)));
+document.querySelectorAll('[data-product]').forEach(el=>el.addEventListener('click',()=>{
+  selectProduct(el.dataset.product);
+  if(el.closest('.hero'))scrollToSection($('#calculator'));
+}));
 document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>selectProduct(el.dataset.category)));
 $('#calc-editor').addEventListener('submit',e=>e.preventDefault());
 
-$('#product-grid').innerHTML=catalog.map((item,i)=>'<button class="product-card" data-detail="'+item.id+'" aria-pressed="false"><span class="product-index">'+String(i+1).padStart(2,'0')+'</span><h3>'+item.name+'</h3><img src="assets/catalog-'+item.id+'.svg" alt="Чертёж: '+item.name.toLowerCase()+'" loading="lazy"><span class="product-arrow">↗</span></button>').join('');
+const detailIcon='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+$('#product-grid').innerHTML=catalog.map((item,i)=>'<button class="product-card" data-detail="'+item.id+'" aria-pressed="false"><span class="product-index">'+String(i+1).padStart(2,'0')+'</span><h3>'+item.name+'</h3><img src="assets/catalog-'+item.id+'.svg" alt="Чертёж: '+item.name.toLowerCase()+'" loading="lazy"><span class="product-arrow">'+detailIcon+'</span></button>').join('');
 document.querySelectorAll('[data-detail]').forEach(el=>el.addEventListener('click',()=>{
   const item=catalog.find(x=>x.id===el.dataset.detail);
   if(item.type)states.grating.type=item.type;
