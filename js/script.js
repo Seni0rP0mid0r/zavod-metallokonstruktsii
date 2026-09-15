@@ -66,8 +66,11 @@ const tabNames={grating:'Решётчатый настил',frame:'Металл�
 $('.calc-tabs').innerHTML=Object.entries(definitions).map(([key,item])=>'<button type="button" data-category="'+key+'" aria-pressed="false">'+(tabNames[key]||item.name)+'</button>').join('');
 document.querySelectorAll('[data-product]').forEach(el=>el.addEventListener('click',()=>{
   selectProduct(el.dataset.product);
-  if(el.closest('.hero'))scrollToSection($('#calculator'));
+  if(el.closest('.hero'))scrollToSection($('#products'));
 }));
+if(matchMedia('(min-width:701px)').matches){
+ document.querySelectorAll('.hero [data-product]').forEach(el=>el.addEventListener('pointerenter',()=>selectProduct(el.dataset.product)));
+}
 document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>selectProduct(el.dataset.category)));
 $('#calc-editor').addEventListener('submit',e=>e.preventDefault());
 
@@ -106,8 +109,8 @@ $('#lead-form').addEventListener('submit',e=>{
   if(!form.reportValidity())return;
   const r=result();
   const body=['Запрос с сайта ЭТАЛОН','Имя: '+form.elements.name.value.trim(),'Телефон: '+phone,'Email: '+email,'Изделие: '+definitions[active].name,r.summary,...definitions[active].fields.map(f=>f.label+': '+fieldLabel(f)),'Предварительная оценка: '+money(r.total),'Окончательная стоимость согласуется по спецификации.','Комментарий: '+form.elements.comment.value.trim()].join('\r\n');
-  window.location.href='mailto:sales@etalonorg.ru?subject='+encodeURIComponent('Расчёт: '+definitions[active].name)+'&body='+encodeURIComponent(body);
-  $('#lead-status').textContent='Письмо с параметрами подготовлено для вашей почтовой программы. Отправьте его самостоятельно. Если программа не открылась, напишите на sales@etalonorg.ru или позвоните +7 (916) 121-99-88.';
+  window.location.href='mailto:zhursa03@mail.ru?subject='+encodeURIComponent('Расчёт: '+definitions[active].name)+'&body='+encodeURIComponent(body);
+  $('#lead-status').textContent='Письмо с параметрами подготовлено для вашей почтовой программы. Отправьте его самостоятельно. Если программа не открылась, напишите на zhursa03@mail.ru или позвоните +7 (916) 121-99-88.';
   $('#lead-status').classList.add('prepared');
 });
 $('#lead-form').addEventListener('input',()=>{$('#lead-form').elements.phone.setCustomValidity('');$('#lead-status').textContent='';});

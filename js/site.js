@@ -13,8 +13,8 @@
       if(!form.reportValidity())return;
       const selection=document.querySelector('#contact-product')?.textContent||document.querySelector('#page-title')?.textContent||'Индивидуальный запрос';
       const body=['Запрос с сайта ЭТАЛОН','Имя: '+form.elements.name.value.trim(),'Телефон: '+phone.value.trim(),'Email: '+email.value.trim(),'Продукция: '+selection,'Комментарий: '+form.elements.comment.value.trim()].join('\r\n');
-      window.location.href='mailto:sales@etalonorg.ru?subject='+encodeURIComponent('Запрос: '+selection)+'&body='+encodeURIComponent(body);
-      form.querySelector('.contact-status').textContent='Письмо подготовлено для вашей почтовой программы. Отправьте его самостоятельно. Если программа не открылась, напишите на sales@etalonorg.ru или позвоните +7 (916) 121-99-88.';
+      window.location.href='mailto:zhursa03@mail.ru?subject='+encodeURIComponent('Запрос: '+selection)+'&body='+encodeURIComponent(body);
+      form.querySelector('.contact-status').textContent='Письмо подготовлено для вашей почтовой программы. Отправьте его самостоятельно. Если программа не открылась, напишите на zhursa03@mail.ru или позвоните +7 (916) 121-99-88.';
     });
   });
   const partners=[

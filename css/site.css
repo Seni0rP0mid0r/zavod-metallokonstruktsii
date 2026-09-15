@@ -52,6 +52,14 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height,90px) + 
 .layer[data-product="frame"]{transform-origin:50% 36%}
 .layer:nth-child(3){transform-origin:50% 60%}
 .layer[data-product="frame"].selected{transform:translateX(-9px) translateY(-5px) scale(1.035)}
+@media(min-width:701px){
+ .hero .layer:hover{filter:brightness(1.18);z-index:3}
+ .hero .layer[data-product="grating"]:hover{transform:translateY(-5px) scale(1.035)}
+ .hero .layer[data-product="frame"]:hover{transform:translateX(-9px) translateY(-5px) scale(1.035)}
+ .hero .layer[data-product="cabin"]:hover{transform:translateY(-5px) scale(1.035)}
+ .hero .layer[data-product="water"]:hover{transform:translateY(-5px) scale(1.035)}
+ .hero .model-labels button:hover{color:var(--paper);background:#2d3528}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .header .header-calc{color:#dfded4}
 /* Nested catalogue and explicit contrast on every header surface. */
