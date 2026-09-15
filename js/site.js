@@ -8,13 +8,12 @@
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){dropdowns.forEach(d=>d.open=false);header.classList.remove('menu-open');menu.setAttribute('aria-expanded','false');}});
   document.querySelectorAll('[data-contact-form]').forEach(form=>{
     form.addEventListener('input',()=>{form.elements.phone.setCustomValidity('');form.querySelector('.contact-status').textContent='';});
-    form.addEventListener('submit',e=>{e.preventDefault();const phone=form.elements.phone,email=form.elements.email;
-      phone.setCustomValidity(!phone.value.trim()&&!email.value.trim()?'Укажите телефон или электронную почту.':phone.value.trim()&&phone.value.replace(/\D/g,'').length<7?'Проверьте номер: нужно не менее 7 цифр.':'');
+    form.addEventListener('submit',e=>{e.preventDefault();const phone=form.elements.phone,email=form.elements.email,number=EtalonEnquiry.phone(form);
+      phone.setCustomValidity(!number&&!email.value.trim()?'Укажите телефон или электронную почту.':number&&number.replace(/\D/g,'').length!==11?'Введите номер полностью: +7 и 10 цифр.':'');
       if(!form.reportValidity())return;
       const selection=document.querySelector('#contact-product')?.textContent||document.querySelector('#page-title')?.textContent||'Индивидуальный запрос';
       const body=['Запрос с сайта ЭТАЛОН','Имя: '+form.elements.name.value.trim(),'Телефон: '+phone.value.trim(),'Email: '+email.value.trim(),'Продукция: '+selection,'Комментарий: '+form.elements.comment.value.trim()].join('\r\n');
-      window.location.href='mailto:zhursa03@mail.ru?subject='+encodeURIComponent('Запрос: '+selection)+'&body='+encodeURIComponent(body);
-      form.querySelector('.contact-status').textContent='Письмо подготовлено для вашей почтовой программы. Отправьте его самостоятельно. Если программа не открылась, напишите на zhursa03@mail.ru или позвоните +7 (916) 121-99-88.';
+      EtalonEnquiry.send(form,'Запрос: '+selection,body,form.querySelector('.contact-status'));
     });
   });
   const partners=[
@@ -43,9 +42,9 @@
   });
   const stage=document.querySelector('.showcase-stage');if(!stage)return;
   const slides=[
-    ['photos/grating-krasnoe-beloe-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nРЕШЁТЧАТЫЙ НАСТИЛ.','Фотография выполненного объекта «Красное&Белое» с действующего сайта компании.','grating','Подробнее о настиле'],
-    ['photos/structures-mosgortrans-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Фотография объекта Мосгортранса с действующего сайта компании.','structures','Подробнее о конструкциях'],
-    ['photos/cabins-gazprom-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nБЛОК-КОНТЕЙНЕР.','Фотография вагона-бытовки для Газпрома с действующего сайта компании.','cabins','Подробнее о модулях']
+    ['photos/archive/photo_5211182003645441088_y.jpg','МАСШТАБНЫЕ ОБЪЕКТЫ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Ангар для самолёта Ил-76.','structures','Подробнее о конструкциях'],
+    ['photos/structures-mosgortrans-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Фотография объекта Мосгортранса.','structures','Подробнее о конструкциях'],
+    ['photos/cabins-gazprom-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nБЛОК-КОНТЕЙНЕР.','Фотография вагона-бытовки для Газпрома.','cabins','Подробнее о модулях']
   ];let current=0;
   let slideRequest=0;
   async function show(i){schedule();current=(i+slides.length)%slides.length;const request=++slideRequest,s=slides[current],img=document.querySelector('#showcase-image');

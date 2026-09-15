@@ -62,7 +62,12 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height,90px) + 
  .hero .model-labels button:hover{color:var(--paper);background:#2d3528!important}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-.header .header-calc{color:#dfded4}
+.header .header-calc{color:#dfded4;display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;font-family:var(--display);font-weight:500;line-height:1.2;letter-spacing:.04em;white-space:nowrap;border:1px solid #ba6a41;border-radius:0}
+.calc-editor .field{display:grid;grid-template-rows:2.8em 54px auto;align-content:start;gap:8px;min-width:0}
+.calc-editor .field>span:first-child{align-self:end;line-height:1.4}
+.calc-editor .field input,.calc-editor .field select{width:100%;height:54px;min-width:0;margin:0;border-radius:0}
+.calc-editor .field-error:empty{display:none}
+@media(max-width:700px){.header .header-calc{min-height:44px;font-size:10px;gap:10px;padding:10px 12px}.calc-editor .field{grid-template-rows:4.2em 54px auto}.calc-editor .field input,.calc-editor .field select{font-size:16px;padding-inline:10px}}
 /* Nested catalogue and explicit contrast on every header surface. */
 .header #site-nav,.header #site-nav a,.header #site-nav summary{color:#e1e3d6}
 .header #site-nav>a,.header #site-nav>details>summary{font-size:13px;line-height:1.5}
@@ -117,3 +122,5 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height,90px) + 
  .home-page main>.contact-section{align-content:center}
  .home-page main>.partners-section{min-height:0;justify-content:flex-start;padding-block:32px}
 }
+
+@media(max-width:700px){.partner-crop img{filter:none}}

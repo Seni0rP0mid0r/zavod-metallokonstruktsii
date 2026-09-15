@@ -102,16 +102,14 @@ document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('cli
 $('#lead-form').addEventListener('submit',e=>{
   e.preventDefault();
   const form=e.currentTarget;
-  const phone=form.elements.phone.value.trim(),email=form.elements.email.value.trim();
+  const phone=EtalonEnquiry.phone(form),email=form.elements.email.value.trim();
   form.elements.phone.setCustomValidity('');
   if(!phone&&!email){form.elements.phone.setCustomValidity('Укажите телефон или электронную почту.');form.reportValidity();return;}
-  if(phone && phone.replace(/\D/g,'').length<7){form.elements.phone.setCustomValidity('Проверьте номер телефона: не менее 7 цифр.');form.reportValidity();return;}
+  if(phone && phone.replace(/\D/g,'').length!==11){form.elements.phone.setCustomValidity('Введите номер полностью: +7 и 10 цифр.');form.reportValidity();return;}
   if(!form.reportValidity())return;
   const r=result();
   const body=['Запрос с сайта ЭТАЛОН','Имя: '+form.elements.name.value.trim(),'Телефон: '+phone,'Email: '+email,'Изделие: '+definitions[active].name,r.summary,...definitions[active].fields.map(f=>f.label+': '+fieldLabel(f)),'Предварительная оценка: '+money(r.total),'Окончательная стоимость согласуется по спецификации.','Комментарий: '+form.elements.comment.value.trim()].join('\r\n');
-  window.location.href='mailto:zhursa03@mail.ru?subject='+encodeURIComponent('Расчёт: '+definitions[active].name)+'&body='+encodeURIComponent(body);
-  $('#lead-status').textContent='Письмо с параметрами подготовлено для вашей почтовой программы. Отправьте его самостоятельно. Если программа не открылась, напишите на zhursa03@mail.ru или позвоните +7 (916) 121-99-88.';
-  $('#lead-status').classList.add('prepared');
+  EtalonEnquiry.send(form,'Расчёт: '+definitions[active].name,body,$('#lead-status'));
 });
 $('#lead-form').addEventListener('input',()=>{$('#lead-form').elements.phone.setCustomValidity('');$('#lead-status').textContent='';});
 const menu=$('.menu-toggle');

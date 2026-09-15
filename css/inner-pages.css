@@ -20,10 +20,13 @@
 @media(max-width:700px){.gallery-thumbnails button{flex-basis:76px;width:76px;height:54px}}
 .photo-open{overflow:hidden}
 .photo-preview[open]{display:flex;flex-direction:column;width:min(1360px,96vw);height:94dvh;max-height:94dvh;margin:auto;color:var(--paper)}
-.photo-preview-top{flex:none}.photo-preview-stage{flex:1;min-height:0;width:100%;height:auto;overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:0}
-.photo-preview img{transition:none;touch-action:none;-webkit-user-drag:none;object-fit:contain;object-position:center top;width:100%;min-width:100%;height:auto;max-width:none;max-height:none;flex:0 0 auto}
+.photo-preview-top{flex:none}.photo-preview-stage{position:relative;flex:1;min-height:0;min-width:0;width:100%;height:auto;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0;overscroll-behavior:contain}
+.photo-preview img{transition:none;touch-action:none;-webkit-user-drag:none;object-fit:contain;object-position:center;width:auto;min-width:0;height:auto;max-width:none;max-height:none;flex:0 0 auto}
 .photo-preview-stage.is-dragging{cursor:grabbing}
 .photo-preview-hint{flex:none;margin:0;padding:10px 16px;font-size:12px;line-height:1.5;color:var(--paper);border-top:1px solid var(--line)}
 .photo-preview-tools button,.photo-preview .close-dialog{min-width:44px;min-height:44px}
 .photo-preview-tools button:disabled{opacity:.4;cursor:default}
 @media(max-width:700px){.photo-preview[open]{width:100%;max-width:100%;height:100dvh;max-height:100dvh;border:0}.photo-preview-top{height:auto;min-height:100px;display:grid;grid-template-columns:1fr auto;padding:8px 12px;gap:8px}.photo-preview-label{grid-column:1/-1;max-width:100%}.photo-preview-tools{justify-self:start}.photo-preview .close-dialog{position:static}.photo-preview-hint{padding-bottom:max(10px,env(safe-area-inset-bottom))}.project-slider .project-slide h4{font-size:20px}.gallery-thumbnails{overscroll-behavior-x:contain}.contact-direct a{overflow-wrap:anywhere}}
+
+.gallery-thumbnails{scrollbar-width:none}.gallery-thumbnails::-webkit-scrollbar{display:none}
+.photo-preview-nav{display:flex;align-items:center;justify-content:center;gap:24px;flex:none;padding:6px 16px;border-top:1px solid var(--line)}.photo-preview-nav button{width:48px;height:44px;background:transparent;border:1px solid #657254;color:var(--paper);font:20px var(--font)}.photo-preview-nav span{min-width:70px;text-align:center;font-variant-numeric:tabular-nums}.photo-preview-nav button:hover{background:#30372a}
