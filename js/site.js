@@ -11,7 +11,10 @@
     form.addEventListener('submit',e=>{e.preventDefault();const phone=form.elements.phone,email=form.elements.email;
       phone.setCustomValidity(!phone.value.trim()&&!email.value.trim()?'Укажите телефон или электронную почту.':phone.value.trim()&&phone.value.replace(/\D/g,'').length<7?'Проверьте номер: нужно не менее 7 цифр.':'');
       if(!form.reportValidity())return;
-      form.querySelector('.contact-status').textContent='Заявка подготовлена. Это демонстрация: письмо не отправлено, данные не сохранены. Подключение почты будет добавлено позже.';
+      const selection=document.querySelector('#contact-product')?.textContent||document.querySelector('#page-title')?.textContent||'Индивидуальный запрос';
+      const body=['Запрос с сайта ЭТАЛОН','Имя: '+form.elements.name.value.trim(),'Телефон: '+phone.value.trim(),'Email: '+email.value.trim(),'Продукция: '+selection,'Комментарий: '+form.elements.comment.value.trim()].join('\r\n');
+      window.location.href='mailto:sales@etalonorg.ru?subject='+encodeURIComponent('Запрос: '+selection)+'&body='+encodeURIComponent(body);
+      form.querySelector('.contact-status').textContent='Письмо подготовлено для вашей почтовой программы. Отправьте его самостоятельно. Если программа не открылась, напишите на sales@etalonorg.ru или позвоните +7 (916) 121-99-88.';
     });
   });
   const partners=[
@@ -40,15 +43,15 @@
   });
   const stage=document.querySelector('.showcase-stage');if(!stage)return;
   const slides=[
-    ['platform','ПРОЧНАЯ ОПОРА.\nОТКРЫТАЯ СТРУКТУРА.','Решётчатый настил для проходов, площадок и технологических перекрытий.','grating','Подробнее о настиле'],
-    ['structure','БОЛЬШИЕ ПРОЛЁТЫ.\nТОЧНЫЕ СОЕДИНЕНИЯ.','Металлоконструкции как основа производственных и складских пространств.','structures','Подробнее о конструкциях'],
-    ['modules','ГОТОВАЯ ФОРМА.\nВАША КОМПЛЕКТАЦИЯ.','Блок-контейнеры для рабочих, бытовых и технических задач.','cabins','Подробнее о модулях']
+    ['photos/grating-krasnoe-beloe-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nРЕШЁТЧАТЫЙ НАСТИЛ.','Фотография выполненного объекта «Красное&Белое» с действующего сайта компании.','grating','Подробнее о настиле'],
+    ['photos/structures-mosgortrans-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Фотография объекта Мосгортранса с действующего сайта компании.','structures','Подробнее о конструкциях'],
+    ['photos/cabins-gazprom-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nБЛОК-КОНТЕЙНЕР.','Фотография вагона-бытовки для Газпрома с действующего сайта компании.','cabins','Подробнее о модулях']
   ];let current=0;
   let slideRequest=0;
   async function show(i){schedule();current=(i+slides.length)%slides.length;const request=++slideRequest,s=slides[current],img=document.querySelector('#showcase-image');
-    const preload=new Image();preload.src='assets/showcase-'+s[0]+'.png';
+    const preload=new Image();preload.src='assets/'+s[0];
     try{await preload.decode();}catch{return;}if(request!==slideRequest)return;
-    img.src='assets/showcase-'+s[0]+'.png';img.alt='Концептуальная визуализация: '+s[2];
+    img.src='assets/'+s[0];img.alt=s[2];
     document.querySelector('#slide-title').textContent=s[1];document.querySelector('#slide-text').textContent=s[2];
     document.querySelector('#slide-link').href='page.html?slug='+s[3];document.querySelector('#slide-link').textContent=s[4]+' ↗';
     document.querySelector('#slide-count').textContent='0'+(current+1)+' / 03';
@@ -79,7 +82,7 @@
  ['Что подготовить','Укажите назначение изделия, габариты, количество и условия эксплуатации. Для настила важны нагрузки, пролёты и схема опирания. Приложите имеющиеся чертежи, спецификацию и требования к материалу. Неизвестные параметры можно обозначить отдельно для уточнения.'],
  ['Что прорабатываем','Технический отдел рассматривает исходные документы, индивидуальные чертежи, раскладку настила и деталировку КМД. Уточняются размеры, вырезы, соединения и комплектность. Состав документации и объём работ определяются по конкретной задаче.'],
  ['Что согласовываем','В спецификации фиксируются размеры и количество изделий, материал, покрытие, обрамление и необходимые комплектующие. Проверьте актуальность чертежей и отдельно обозначьте изменения: итоговый состав должен соответствовать вашему проекту.'],
- ['Что нужно для предложения','Сообщите город поставки, желаемые сроки и требования к комплектности. Стоимость, сроки изготовления, доставка и разгрузка обсуждаются отдельно. Калькулятор на сайте даёт демонстрационный ориентир; окончательные условия требуют согласования.']
+ ['Что нужно для предложения','Сообщите город поставки, желаемые сроки и требования к комплектности. Стоимость, сроки изготовления, доставка и разгрузка обсуждаются отдельно. Калькулятор на сайте даёт предварительный ориентир; окончательные условия требуют согласования.']
  ];
  const buttons=articles.map((article,i)=>{const b=document.createElement('button');b.type='button';b.id='engineering-tab-'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls','engineering-panel-'+i);b.textContent=article.querySelector('span').textContent;b.addEventListener('click',()=>select(i));b.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%articles.length;if(e.key==='ArrowLeft')next=(i+articles.length-1)%articles.length;if(e.key==='Home')next=0;if(e.key==='End')next=articles.length-1;if(next!==undefined){e.preventDefault();select(next);buttons[next].focus();}});tabs.append(b);
  article.querySelector('span').remove();article.id='engineering-panel-'+i;article.setAttribute('role','tabpanel');article.setAttribute('aria-labelledby',b.id);article.tabIndex=0;

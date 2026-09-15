@@ -1,11 +1,35 @@
-// Replace these paths with real project photos. Titles remain editable per category.
+/* Реальные фото перенесены с etalonrussia.ru. Полный источник и назначение — assets/photos/PHOTO_REGISTRY.md. */
+const photo = (src, title, text) => ({src:'assets/photos/'+src, title, text});
+const grating = [
+  photo('grating-krasnoe-beloe-01.jpg','Сварной настил · «Красное&Белое»','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('grating-krasnoe-beloe-02.jpg','Сварной настил · «Красное&Белое»','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('grating-krasnoe-beloe-03.jpg','Сварной настил · «Красное&Белое»','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('grating-krasnoe-beloe-04.jpg','Сварной настил · «Красное&Белое»','Реальная фотография выполненного проекта из опубликованной галереи.')
+];
+const structures = [
+  photo('structures-mosgortrans-01.jpg','Металлоконструкции · Мосгортранс','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('structures-mosgortrans-02.jpg','Металлоконструкции · Мосгортранс','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('structures-mosgortrans-03.jpg','Металлоконструкции · Мосгортранс','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('structures-mosgortrans-04.jpg','Металлоконструкции · Мосгортранс','Реальная фотография выполненного проекта из опубликованной галереи.')
+];
+const cabins = [
+  photo('cabins-gazprom-01.jpg','Вагон-бытовка · Газпром','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('cabins-gazprom-02.jpg','Вагон-бытовка · Газпром','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('cabins-gazprom-03.jpg','Вагон-бытовка · Газпром','Реальная фотография выполненного проекта из опубликованной галереи.'),
+  photo('cabins-gazprom-04.jpg','Вагон-бытовка · Газпром','Реальная фотография выполненного проекта из опубликованной галереи.')
+];
+
+const projectGroups = window.EtalonProjectGroups || [];
+const groupPhotos = (...categories) => projectGroups.filter(group => categories.includes(group.category)).flatMap(group => group.items);
+const chassisPhotos = projectGroups.find(group => group.id === 'rzd-chassis')?.items || cabins;
+const rzdCabinPhotos = projectGroups.find(group => group.id === 'rzd-cabin')?.items || cabins;
+
 window.EtalonGallery = {
- default: [
-  {src:'assets/project-placeholder-1.svg',title:'Общий вид объекта',text:'Место для фотографии готового проекта. Изображение будет заменено.'},
-  {src:'assets/project-placeholder-2.svg',title:'Изделие в деталях',text:'Место для фотографии узлов, покрытия и соединений.'},
-  {src:'assets/project-placeholder-3.svg',title:'Результат на объекте',text:'Место для фотографии установленной продукции.'}
- ]
+  default: grating,
+  grating: groupPhotos('grating'), welded: projectGroups.find(group => group.id === 'grating-kb')?.items || grating,
+  pressed: groupPhotos('grating').filter(item => !item.title.includes('Красное&Белое')),
+  structures: groupPhotos('structures'),
+  cabins: groupPhotos('cabins'), 'site-cabins': groupPhotos('cabins'), 'chassis-cabins': chassisPhotos,
+  projects: window.EtalonProjectArchive || [...grating, ...structures, ...cabins]
 };
-// Add confirmed coordinates and address to display a real map marker.
 window.EtalonLocation = {address:'Псковская область, Великие Луки', latitude:56.34, longitude:30.53, cityOnly:true};
-window.EtalonGallery.doors = [1,2,3].map(number=>({src:'assets/showcase-modules.png',title:'Пример галереи · '+number+' / 3',text:'Концептуальная иллюстрация модульного здания с дверями. Не фотография выполненного проекта.'}));
