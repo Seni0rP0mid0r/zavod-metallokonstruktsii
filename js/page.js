@@ -41,9 +41,9 @@
   const hint=el('p','photo-preview-hint','Масштаб: + / − или колесо. Перемещение: перетаскивайте фото. Esc — закрыть.');preview.append(hint);
   let scale=1,panX=0,panY=0,pointerStart,initialPinch;
   const endDrag=()=>{pointerStart=null;previewStage.classList.remove('is-dragging');};
-  const maxScale=4;
+  const maxScale=2;
   const paintPreview=()=>{const maxX=Math.max(0,(previewImage.offsetWidth*scale-previewStage.clientWidth)/2),maxY=Math.max(0,(previewImage.offsetHeight*scale-previewStage.clientHeight)/2);panX=Math.max(-maxX,Math.min(maxX,panX));panY=Math.max(-maxY,Math.min(maxY,panY));previewImage.style.transform='translate('+panX+'px,'+panY+'px) scale('+scale+')';zoomReset.textContent=Math.round(scale*100)+'%';zoomOut.disabled=scale<=1;zoomIn.disabled=scale>=maxScale;};
-  const setScale=next=>{scale=Math.max(1,Math.min(1.35,next));if(scale===1){panX=0;panY=0;}paintPreview();};
+  const setScale=next=>{scale=Math.max(1,Math.min(maxScale,next));if(scale===1){panX=0;panY=0;}paintPreview();};
   const resetPreview=()=>{scale=1;panX=0;panY=0;paintPreview();};
   zoomOut.addEventListener('click',()=>setScale(scale-.25));zoomIn.addEventListener('click',()=>setScale(scale+.25));zoomReset.addEventListener('click',resetPreview);previewClose.addEventListener('click',()=>preview.close());preview.addEventListener('click',event=>{if(event.target===preview)preview.close();});previewStage.addEventListener('wheel',event=>{event.preventDefault();setScale(scale+(event.deltaY<0?.2:-.2));},{passive:false});
   previewStage.addEventListener('pointerdown',event=>{if(scale>1&&event.button===0){pointerStart={x:event.clientX,y:event.clientY,panX,panY};previewStage.setPointerCapture(event.pointerId);previewStage.classList.add('is-dragging');}});previewStage.addEventListener('pointermove',event=>{if(pointerStart){if(event.pointerType==='mouse'&&!(event.buttons&1)){endDrag();return;}panX=pointerStart.panX+event.clientX-pointerStart.x;panY=pointerStart.panY+event.clientY-pointerStart.y;paintPreview();}});['pointerup','pointercancel','lostpointercapture'].forEach(name=>previewStage.addEventListener(name,endDrag));preview.addEventListener('close',()=>{endDrag();initialPinch=null;document.documentElement.classList.remove('photo-open');});previewImage.addEventListener('load',paintPreview);window.addEventListener('resize',paintPreview);

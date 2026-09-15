@@ -21,7 +21,7 @@
 .photo-open{overflow:hidden}
 .photo-preview[open]{display:flex;flex-direction:column;width:min(1360px,96vw);height:94dvh;max-height:94dvh;margin:auto;color:var(--paper)}
 .photo-preview-top{flex:none}.photo-preview-stage{flex:1;min-height:0;width:100%;height:auto;overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:0}
-.photo-preview img{transition:none;touch-action:none;-webkit-user-drag:none;object-fit:contain;object-position:center top;width:100%;height:auto;max-width:none;max-height:none;flex:0 0 auto}
+.photo-preview img{transition:none;touch-action:none;-webkit-user-drag:none;object-fit:contain;object-position:center top;width:100%;min-width:100%;height:auto;max-width:none;max-height:none;flex:0 0 auto}
 .photo-preview-stage.is-dragging{cursor:grabbing}
 .photo-preview-hint{flex:none;margin:0;padding:10px 16px;font-size:12px;line-height:1.5;color:var(--paper);border-top:1px solid var(--line)}
 .photo-preview-tools button,.photo-preview .close-dialog{min-width:44px;min-height:44px}
