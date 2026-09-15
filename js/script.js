@@ -69,7 +69,7 @@ document.querySelectorAll('[data-product]').forEach(el=>el.addEventListener('cli
   if(el.closest('.hero'))scrollToSection($('#products'));
 }));
 if(matchMedia('(min-width:701px)').matches){
- document.querySelectorAll('.hero [data-product]').forEach(el=>el.addEventListener('pointerenter',()=>selectProduct(el.dataset.product)));
+ document.querySelectorAll('.hero [data-product]').forEach(el=>el.addEventListener('pointerover',()=>selectProduct(el.dataset.product)));
 }
 document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>selectProduct(el.dataset.category)));
 $('#calc-editor').addEventListener('submit',e=>e.preventDefault());
