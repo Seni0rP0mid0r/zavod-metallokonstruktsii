@@ -19,7 +19,7 @@
 
 ## Заявки и расчёт
 
-Forms submit directly through https://formsubmit.co/ajax/zhursa03@mail.ru. The recipient must confirm the activation email after the first real submission. Local QA mocks success and failure responses; inbox delivery is not verified. No SMTP credentials are stored in the frontend.
+Forms submit directly through https://formsubmit.co/ajax/nastilvl@yandex.ru. The recipient must confirm the activation email after the first real submission. Local QA mocks success and failure responses; inbox delivery is not verified. No SMTP credentials are stored in the frontend.
 
 Калькулятор показывает предварительный ориентир, а не коммерческое предложение. Подтверждённый производителем прайс в проект не предоставлялся; перед использованием калькулятора как коммерческого инструмента ставки в `js/calculator.js` необходимо согласовать. Окончательные условия определяются спецификацией.
 

@@ -20,7 +20,7 @@
       const button=form.querySelector('[type="submit"]');
       form.dataset.sending='true';button.disabled=true;form.setAttribute('aria-busy','true');status.textContent='Отправляем заявку…';
       try{
-        const response=await fetch('https://formsubmit.co/ajax/144c6f70a2e66c0c398ebf2af4e77c16',{
+        const response=await fetch('https://formsubmit.co/ajax/nastilvl@yandex.ru',{
           method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
           body:JSON.stringify({name:form.elements.name.value.trim(),email:form.elements.email.value.trim(),phone:this.phone(form),message,_subject:subject,_template:'table',_honey:form.elements.website?.value||''}),
           signal:AbortSignal.timeout(20000)
