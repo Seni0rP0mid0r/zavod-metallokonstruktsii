@@ -45,6 +45,7 @@
     ['photos/archive/photo_5211182003645441088_y.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Ангар для самолёта Ил-76.','structures','Подробнее о конструкциях'],
     ['photos/structures-mosgortrans-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Фотография объекта Мосгортранса.','structures','Подробнее о конструкциях'],
     ['photos/cabins-gazprom-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nБЛОК-КОНТЕЙНЕР.','Фотография вагона-бытовки для Газпрома.','cabins','Подробнее о модулях']
+    ,['photos/treatment/modular-treatment-01.jpg','\u041c\u041e\u0414\u0423\u041b\u042c\u041d\u042b\u0415\n\u041e\u0427\u0418\u0421\u0422\u041d\u042b\u0415 \u0421\u041e\u041e\u0420\u0423\u0416\u0415\u041d\u0418\u042f.','\u0414\u0432\u0443\u0445\u044d\u0442\u0430\u0436\u043d\u043e\u0435 \u043c\u043e\u0434\u0443\u043b\u044c\u043d\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435 \u043e\u0447\u0438\u0441\u0442\u043d\u044b\u0445 \u0441\u043e\u043e\u0440\u0443\u0436\u0435\u043d\u0438\u0439.','treatment','\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u0435\u0435 \u043e\u0431 \u043e\u0447\u0438\u0441\u0442\u043d\u044b\u0445']
   ];let current=0;
   let slideRequest=0;
   async function show(i){schedule();current=(i+slides.length)%slides.length;const request=++slideRequest,s=slides[current],img=document.querySelector('#showcase-image');
@@ -53,7 +54,7 @@
     img.src='assets/'+s[0];img.alt=s[2];
     document.querySelector('#slide-title').textContent=s[1];document.querySelector('#slide-text').textContent=s[2];
     document.querySelector('#slide-link').href='page.html?slug='+s[3];document.querySelector('#slide-link').textContent=s[4]+' ↗';
-    document.querySelector('#slide-count').textContent='0'+(current+1)+' / 03';
+    document.querySelector('#slide-count').textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
     document.querySelectorAll('[data-slide]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.slide===current)));
     if(!matchMedia('(prefers-reduced-motion: reduce)').matches)img.animate([{opacity:.45,transform:'scale(1.025)'},{opacity:1,transform:'scale(1)'}],{duration:350,easing:'cubic-bezier(.16,1,.3,1)'});
   }

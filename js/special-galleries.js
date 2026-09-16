@@ -344,3 +344,20 @@ window.EtalonSpecialGroups = [
     ]
   }
 ];
+const treatmentProject07=window.EtalonSpecialGroups.find(group=>group.id==='treatment-07');
+const treatmentProject08=window.EtalonSpecialGroups.find(group=>group.id==='treatment-08');
+if(treatmentProject07&&treatmentProject08){
+  const oneStorey=treatmentProject07.items.find(item=>item.src.endsWith('268d75924b5c3302523f92b9370074bf.jpg'));
+  const twoStorey=treatmentProject07.items.filter(item=>item!==oneStorey);
+  const originalProject08=[...treatmentProject08.items];
+  treatmentProject07.title='\u041e\u0447\u0438\u0441\u0442\u043d\u044b\u0435 \u0441\u043e\u043e\u0440\u0443\u0436\u0435\u043d\u0438\u044f \u00b7 \u043f\u0440\u043e\u0435\u043a\u0442 07 \u00b7 \u043e\u0434\u043d\u043e\u044d\u0442\u0430\u0436\u043d\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435';
+  treatmentProject07.items=[oneStorey,...originalProject08].filter(Boolean);
+  treatmentProject08.title='\u041e\u0447\u0438\u0441\u0442\u043d\u044b\u0435 \u0441\u043e\u043e\u0440\u0443\u0436\u0435\u043d\u0438\u044f \u00b7 \u043f\u0440\u043e\u0435\u043a\u0442 08 \u00b7 \u0434\u0432\u0443\u0445\u044d\u0442\u0430\u0436\u043d\u043e\u0435 \u0437\u0434\u0430\u043d\u0438\u0435';
+  treatmentProject08.items=[...twoStorey,
+    {src:'assets/photos/treatment/modular-treatment-01.jpg',title:treatmentProject08.title},
+    {src:'assets/photos/treatment/modular-treatment-02.jpg',title:treatmentProject08.title},
+    {src:'assets/photos/treatment/modular-treatment-03.jpg',title:treatmentProject08.title}
+  ];
+  treatmentProject07.items.forEach(item=>{item.title=treatmentProject07.title;});
+  treatmentProject08.items.forEach(item=>{item.title=treatmentProject08.title;});
+}

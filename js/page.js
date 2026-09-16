@@ -32,7 +32,7 @@
   const head=el('div','wide-heading');head.append(el('h2','',slug==='projects'?'Проекты в деталях':'Продукция на объекте'),el('p','','Фотографии продукции и объектов.'));section.append(head);
   const allGroups=[...(window.EtalonProjectGroups||[]),...(window.EtalonSpecialGroups||[])];
   const categoryGroups={grating:'grating',frame:'structures',cabin:'cabins',water:'treatment',doors:'doors'};
-  const matchingGroups=categoryGroups[p.category]?allGroups.filter(group=>group.category===categoryGroups[p.category]).filter(group=>slug==='welded'?group.id==='grating-kb':slug==='pressed'?group.id.startsWith('welded'):true):[];
+  const matchingGroups=categoryGroups[p.category]?allGroups.filter(group=>group.category===categoryGroups[p.category]).filter(group=>slug==='welded'?group.id==='welded-evraz':slug==='pressed'?group.id==='grating-kb':true):[];
   const sourceGroups=slug==='projects'?allGroups:(matchingGroups.length?matchingGroups:[{title:p.title,items:window.EtalonGallery[slug]||window.EtalonGallery.default}]);
   const groups=sourceGroups.filter(group=>group.items?.length);
   const preview=el('dialog','photo-preview'),previewTop=el('div','photo-preview-top'),previewLabel=el('span','photo-preview-label'),previewTools=el('div','photo-preview-tools'),zoomOut=el('button','','−'),zoomReset=el('button','','100%'),zoomIn=el('button','','+'),previewClose=el('button','close-dialog','Закрыть'),previewStage=el('div','photo-preview-stage'),previewImage=el('img');
@@ -78,3 +78,7 @@
   insert(section);
  }
 })();
+document.querySelectorAll('a[href="mailto:zhursa03@mail.ru"]').forEach(link=>{
+  link.href='mailto:nastilvl@yandex.ru';
+  link.textContent='nastilvl@yandex.ru';
+});

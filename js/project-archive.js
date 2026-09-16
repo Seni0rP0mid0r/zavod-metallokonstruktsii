@@ -725,4 +725,14 @@ window.EtalonProjectGroups = [
     ]
   }
 ];
+const correctGratingLabels = {
+  'grating-kb': '\u041f\u0440\u0435\u0441\u0441\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043d\u0430\u0441\u0442\u0438\u043b \u00b7 \u00ab\u041a\u0440\u0430\u0441\u043d\u043e\u0435&\u0411\u0435\u043b\u043e\u0435\u00bb',
+  'welded-evraz': '\u0421\u0432\u0430\u0440\u043d\u043e\u0439 \u043d\u0430\u0441\u0442\u0438\u043b \u00b7 \u0415\u0412\u0420\u0410\u0417'
+};
+window.EtalonProjectGroups.forEach(group => {
+  const title=correctGratingLabels[group.id];
+  if(!title)return;
+  group.title=title;
+  group.items.forEach(item=>{item.title=title;});
+});
 window.EtalonProjectArchive = window.EtalonProjectGroups.flatMap(group => group.items);

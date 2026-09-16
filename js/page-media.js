@@ -33,3 +33,8 @@ window.EtalonGallery = {
   projects: window.EtalonProjectArchive || [...grating, ...structures, ...cabins]
 };
 window.EtalonLocation = {address:'Псковская область, Великие Луки', latitude:56.34, longitude:30.53, cityOnly:true};
+const correctedGratingGroups = window.EtalonProjectGroups || [];
+const pressedKb = correctedGratingGroups.find(group => group.id === 'grating-kb')?.items;
+const weldedEvraz = correctedGratingGroups.find(group => group.id === 'welded-evraz')?.items;
+if(pressedKb) window.EtalonGallery.pressed=pressedKb;
+if(weldedEvraz) window.EtalonGallery.welded=weldedEvraz;

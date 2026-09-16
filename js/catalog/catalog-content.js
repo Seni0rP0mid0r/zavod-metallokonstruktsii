@@ -141,6 +141,11 @@
       ]
     }
   };
+  const previousEmail='zhursa03@mail.ru', currentEmail='nastilvl@yandex.ru';
+  Object.values(content).forEach(update=>{
+    if(typeof update.lead==='string')update.lead=update.lead.replaceAll(previousEmail,currentEmail);
+    (update.sections||[]).forEach(section=>{section.text=section.text.replaceAll(previousEmail,currentEmail);});
+  });
   Object.entries(content).forEach(([slug, update]) => {
     window.EtalonPages[slug] = { ...window.EtalonPages[slug], ...update };
   });
