@@ -1,0 +1,56 @@
+name: Deploy to Masterhost
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: masterhost-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build static site
+        run: node scripts/package-site.cjs
+
+      - name: Check deployment package
+        run: |
+          test -f dist/index.html
+          test -f dist/page.html
+          test -f dist/js/site.js
+
+      - name: Trust Masterhost SSH host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H -p 22 u523833.ssh.masterhost.ru >> ~/.ssh/known_hosts
+
+      - name: Install password-based SSH helper
+        run: sudo apt-get update && sudo apt-get install --yes sshpass
+
+      - name: Publish generated site
+        env:
+          SSHPASS: ${{ secrets.MASTERHOST_DEPLOY_PASSWORD }}
+        run: |
+          sshpass -e rsync -az --delete \
+            --exclude '.well-known/' \
+            --exclude 'cgi-bin/' \
+            -e 'ssh -o StrictHostKeyChecking=yes -p 22' \
+            dist/ \
+            u523833@u523833.ssh.masterhost.ru:etalonrussia.ru/www/
