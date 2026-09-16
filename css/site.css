@@ -67,7 +67,7 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height,90px) + 
 .calc-editor .field>span:first-child{align-self:end;line-height:1.4}
 .calc-editor .field input,.calc-editor .field select{width:100%;height:54px;min-width:0;margin:0;border-radius:0}
 .calc-editor .field-error:empty{display:none}
-@media(max-width:700px){.header .header-calc{min-height:44px;font-size:10px;gap:10px;padding:10px 12px}.calc-editor .field{grid-template-rows:4.2em 54px auto}.calc-editor .field input,.calc-editor .field select{font-size:16px;padding-inline:10px}}
+@media(max-width:700px){.header .header-calc{min-height:44px;font-size:10px;gap:10px;padding:10px 12px}.calculator{padding-block:18px}.calc-tabs{margin-bottom:14px}.calc-editor{gap:10px 12px;min-height:0}.calc-editor .field{grid-template-rows:3.4em 54px auto;gap:6px}.calc-editor .field input,.calc-editor .field select{font-size:16px;padding-inline:10px}}
 /* Nested catalogue and explicit contrast on every header surface. */
 .header #site-nav,.header #site-nav a,.header #site-nav summary{color:#e1e3d6}
 .header #site-nav>a,.header #site-nav>details>summary{font-size:13px;line-height:1.5}

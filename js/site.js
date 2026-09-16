@@ -42,7 +42,7 @@
   });
   const stage=document.querySelector('.showcase-stage');if(!stage)return;
   const slides=[
-    ['photos/archive/photo_5211182003645441088_y.jpg','МАСШТАБНЫЕ ОБЪЕКТЫ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Ангар для самолёта Ил-76.','structures','Подробнее о конструкциях'],
+    ['photos/archive/photo_5211182003645441088_y.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Ангар для самолёта Ил-76.','structures','Подробнее о конструкциях'],
     ['photos/structures-mosgortrans-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nМЕТАЛЛОКОНСТРУКЦИИ.','Фотография объекта Мосгортранса.','structures','Подробнее о конструкциях'],
     ['photos/cabins-gazprom-01.jpg','РЕАЛЬНЫЙ ПРОЕКТ.\nБЛОК-КОНТЕЙНЕР.','Фотография вагона-бытовки для Газпрома.','cabins','Подробнее о модулях']
   ];let current=0;
